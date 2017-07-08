@@ -2,7 +2,7 @@ import itertools
 from statistics import stdev
 
 string = "When, in the course of human events, it becomes necessary"
-
+string = "We the people of the United States, in order to form a more perfect union, establish justice, insure domestic tranquility"
 
 top_how_many = 1
 max_newlines = 6
