@@ -3,9 +3,6 @@ from statistics import stdev
 
 string = "When, in the course of human events, it becomes necessary"
 
-bits = string.count(' ')
-args = tuple(itertools.repeat((0,1), bits))
-bitmaps = itertools.product(*args)
 
 def pretty(LoL):
     S = ''
@@ -31,14 +28,19 @@ def all_join(L, S, bitmap):
 
 ####
 
-num_newlines = 2
+for num_newlines in range(1, 6):
 
-pairs = []
-for b in bitmaps:
-    if sum(b) == num_newlines:
-        words = string.split()
-        wrapped = all_join(words[1:], words[0], b)
-        lengths = [len(line) for line in wrapped.split('\n')]
-        pairs.append([stdev(lengths), wrapped])
-pairs.sort(key=lambda e: e[0])
-print(pretty(pairs[0:4]))
+    bits = string.count(' ')
+    args = tuple(itertools.repeat((0,1), bits))
+    bitmaps = itertools.product(*args)
+
+    print(str(num_newlines) + '\n========\n')
+    pairs = []
+    for b in bitmaps:
+        if sum(b) == num_newlines:
+            words = string.split()
+            wrapped = all_join(words[1:], words[0], b)
+            lengths = [len(line) for line in wrapped.split('\n')]
+            pairs.append([stdev(lengths), wrapped])
+    pairs.sort(key=lambda e: e[0])
+    print(pretty(pairs[0:4]))
