@@ -2,14 +2,12 @@ import itertools
 from statistics import stdev
 
 string = "When, in the course of human events, it becomes necessary"
-
+top_how_many = 1
 
 def pretty(LoL):
     S = ''
     for r in LoL:
-        for e in r:
-            S = S + str(e) + '\n'
-        S = S + '\n'
+        S = S + str(round(r[0], 2)) + ' :\n' + r[1] + '\n\n'
     return S
 
 def all_join(L, S, bitmap):
@@ -43,4 +41,4 @@ for num_newlines in range(1, 6):
             lengths = [len(line) for line in wrapped.split('\n')]
             pairs.append([stdev(lengths), wrapped])
     pairs.sort(key=lambda e: e[0])
-    print(pretty(pairs[0:4]))
+    print(pretty(pairs[0:top_how_many]))
