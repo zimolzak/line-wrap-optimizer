@@ -2,9 +2,8 @@ import itertools
 from statistics import stdev
 
 string = "When, in the course of human events, it becomes necessary"
-bits = string.count(' ')
-words = string.split()
 
+bits = string.count(' ')
 args = tuple(itertools.repeat((0,1), bits))
 bitmaps = itertools.product(*args)
 
@@ -37,6 +36,7 @@ num_newlines = 2
 pairs = []
 for b in bitmaps:
     if sum(b) == num_newlines:
+        words = string.split()
         wrapped = all_join(words[1:], words[0], b)
         lengths = [len(line) for line in wrapped.split('\n')]
         pairs.append([stdev(lengths), wrapped])
