@@ -2,7 +2,10 @@ import itertools
 from statistics import stdev
 
 string = "When, in the course of human events, it becomes necessary"
+
+
 top_how_many = 1
+max_newlines = 6
 
 def pretty(LoL):
     S = ''
@@ -26,7 +29,7 @@ def all_join(L, S, bitmap):
 
 ####
 
-for num_newlines in range(1, 6):
+for num_newlines in range(1, max_newlines):
 
     bits = string.count(' ')
     args = tuple(itertools.repeat((0,1), bits))
